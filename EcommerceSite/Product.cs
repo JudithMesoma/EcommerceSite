@@ -6,7 +6,34 @@ using System.Threading.Tasks;
 
 namespace EcommerceSite
 {
-    internal class Product
+    public class Product
     {
+        public int ProdID { get; set; }
+        public string ProdName { get; set; }
+        public decimal ItemPrice { get; set; }
+        public int StockAmount { get; set; }
+
+        // Constructor
+        public Product(int prodID, string prodName, decimal itemPrice, int stockAmount)
+        {
+            ProdID = prodID;
+            ProdName = prodName;
+            ItemPrice = itemPrice;
+            StockAmount = stockAmount;
+        }
+
+        // Method to increase stock
+        public void IncreaseStock(int amount)
+        {
+            if (amount > 0)
+                StockAmount += amount;
+        }
+
+        // Method to decrease stock
+        public void DecreaseStock(int amount)
+        {
+            if (amount > 0 && StockAmount - amount >= 0)
+                StockAmount -= amount;
+        }
     }
 }
